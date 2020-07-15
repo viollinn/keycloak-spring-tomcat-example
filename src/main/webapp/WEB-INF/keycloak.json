@@ -1,12 +1,10 @@
 {
-  "realm": "spring",
-  "auth-server-url": "http://keycloak.akuleshov.ru/auth",
+  "realm": "master",
+  "auth-server-url": "http://localhost:8080/auth",
   "ssl-required": "none",
-  "resource": "springapp",
+  "resource": "s2e",
   "credentials": {
-    "secret": "dc8e0784-f9c8-406a-83a8-e5efbf2c108d"
+    "secret": "e586876a-6cc1-45ff-adf4-bb6fd8a893ec"
   },
-  "policy-enforcer": {
-    "enforcement-mode" : "ENFORCING"
-  }
+  "principal-attribute": "preferred_username"
 }
