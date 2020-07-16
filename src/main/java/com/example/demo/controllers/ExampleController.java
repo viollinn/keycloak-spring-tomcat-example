@@ -1,6 +1,13 @@
 package com.example.demo.controllers;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.keycloak.KeycloakPrincipal;
+import org.keycloak.KeycloakSecurityContext;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +24,12 @@ public class ExampleController {
     }
 
     @RequestMapping(method = GET, value = "/protected/**")
-    public String getProtected(Principal principal){
-        return "Protected area: "+principal.toString();
+    public String getProtected(KeycloakAuthenticationToken principal){
+
+        KeycloakPrincipal kp = (KeycloakPrincipal) principal.getPrincipal();
+        KeycloakSecurityContext ksc = kp.getKeycloakSecurityContext();
+
+        return "Protected area: "+ksc.getToken().getName();
     }
 
 }

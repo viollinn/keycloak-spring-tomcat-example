@@ -5,6 +5,5 @@
   "resource": "s2e",
   "credentials": {
     "secret": "e586876a-6cc1-45ff-adf4-bb6fd8a893ec"
-  },
-  "principal-attribute": "preferred_username"
+  }
 }
